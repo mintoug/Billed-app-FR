@@ -19,6 +19,12 @@ export default class NewBill {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
+    //empèche la saisie d'un document autre que jpg jpeg png
+    const fileExtension = fileName.split('.').pop()
+
+    console.log(file)
+
+    if ( fileExtension === "jpg" || fileExtension === "jpeg" || fileExtension === "png") {
     this.firestore
       .storage
       .ref(`justificatifs/${fileName}`)
@@ -27,7 +33,15 @@ export default class NewBill {
       .then(url => {
         this.fileUrl = url
         this.fileName = fileName
-      })
+
+        
+      this.document.getElementById("wrongFormat").innerText = ""
+      })}else{
+        
+      // reject storing image because wrong format
+      this.document.querySelector(`input[data-testid='file']`).value = null;
+      this.document.getElementById("wrongFormat").innerText = "Seul les types d'images suivantes sont autorisées : jpg, jpeg ou png"
+      }
   }
   handleSubmit = e => {
     e.preventDefault()

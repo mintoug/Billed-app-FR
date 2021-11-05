@@ -22,8 +22,6 @@ export default class NewBill {
     //empèche la saisie d'un document autre que jpg jpeg png
     const fileExtension = fileName.split('.').pop()
 
-    console.log(file)
-
     if ( fileExtension === "jpg" || fileExtension === "jpeg" || fileExtension === "png") {
     this.firestore
       .storage
@@ -33,9 +31,9 @@ export default class NewBill {
       .then(url => {
         this.fileUrl = url
         this.fileName = fileName
+       
+      this.document.getElementById("wrongFormat").innerText = " "
 
-        
-      this.document.getElementById("wrongFormat").innerText = ""
       })}else{
         
       // reject storing image because wrong format
@@ -45,7 +43,7 @@ export default class NewBill {
   }
   handleSubmit = e => {
     e.preventDefault()
-    console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
+    
     const email = JSON.parse(localStorage.getItem("user")).email
     const bill = {
       email,

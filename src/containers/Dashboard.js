@@ -32,6 +32,8 @@ export const card = (bill) => {
     firstAndLastNames.split('.')[0] : ''
   const lastName = firstAndLastNames.includes('.') ?
   firstAndLastNames.split('.')[1] : firstAndLastNames
+  //ajout d'une condition pour la date
+  if (bill.date !=="" && bill.date.substr(0, 4) > 2000){
 
   return (`
     <div class='bill-card' id='open-bill${bill.id}' data-testid='open-bill${bill.id}'>
@@ -49,6 +51,8 @@ export const card = (bill) => {
       </div>
     </div>
   `)
+}
+return('')
 }
 
 export const cards = (bills) => {
@@ -145,10 +149,14 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
-    })
-
+    // bills.forEach(bill => {
+    //   $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+    // })
+filteredBills(bills, getStatus(this.index)).forEach((bill) => {
+  $(`#open-bill${bill.id}`).click((e) =>
+  this.handleEditTicket(e, bill, bills)
+  )
+})
     return bills
 
   }

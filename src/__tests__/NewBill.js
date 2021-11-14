@@ -2,11 +2,10 @@ import { fireEvent, screen } from "@testing-library/dom"
 import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
 import BillsUI from '../views/BillsUI'
-import userEvent from '@testing-library/user-event'
 import { localStorageMock } from "../__mocks__/localStorage.js"
 import { ROUTES, ROUTES_PATH } from '../constants/routes.js'
 import firebase from "../__mocks__/firebase"
-import firestore from "../app/Firestore.js"
+
 
 describe("Given I am connected as an employee an I am on a NewBill page", () => {
   describe("When I upload a proof file", () => {

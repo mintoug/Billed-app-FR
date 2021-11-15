@@ -1,6 +1,6 @@
 export const formatDate = (dateStr) => {
   const regEx = /^\d{4}-\d{2}-\d{2}$/;
-  if ((dateStr) === NaN || dateStr === "" || !dateStr.match(regEx)) return "1 Jan. 22";
+  if ((dateStr) === NaN || dateStr === "" || !dateStr.match(regEx)) return "date non valide";
   const date = new Date(dateStr)
   const ye = new Intl.DateTimeFormat('fr', { year: 'numeric' }).format(date)
   const mo = new Intl.DateTimeFormat('fr', { month: 'short' }).format(date)

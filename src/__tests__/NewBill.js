@@ -3,11 +3,11 @@ import NewBillUI from "../views/NewBillUI.js"
 import NewBill from "../containers/NewBill.js"
 import BillsUI from '../views/BillsUI'
 import { localStorageMock } from "../__mocks__/localStorage.js"
-import { ROUTES, ROUTES_PATH } from '../constants/routes.js'
+import { ROUTES } from '../constants/routes.js'
 import firebase from "../__mocks__/firebase"
 
 
-describe("Given I am connected as an employee an I am on a NewBill page", () => {
+describe("Given I am connected as an employee and I am on a NewBill page", () => {
   describe("When I upload a proof file", () => {
     test("Then it should have been changed in the input", () => {
       Object.defineProperty(window, 'localStorage', { value: localStorageMock })

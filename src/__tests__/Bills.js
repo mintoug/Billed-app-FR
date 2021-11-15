@@ -23,9 +23,7 @@ describe("Given I am connected as an employee", () => {
       )
       document.body.innerHTML = `<div id='root'>${html}</div>`
       Router()
-	    const onNavigate = (pathname) => {
-		    document.body.innerHTML = ROUTES({ pathname })
-	    }
+	   
 	    expect(screen.getByTestId("icon-window").classList).toContain("active-icon")
     })
 
